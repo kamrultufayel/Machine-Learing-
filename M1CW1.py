@@ -34,3 +34,24 @@ plt.xlabel('True Values')
 plt.ylabel('Predictions')
 plt.legend()
 plt.show()
+
+
+Split the data into training and testing set. 
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Load the dataset
+data = pd.read_csv('cw1data.csv')
+
+# Define the input variables (X) and the output variable (y)
+X = data.drop('y', axis=1)  # Features
+y = data['y']  # Target variable
+
+# Split the dataset into training and testing sets (80% training, 20% testing)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Display the shape of the training and testing sets
+print("Training set shape:", X_train.shape, y_train.shape)
+print("Testing set shape:", X_test.shape, y_test.shape)
